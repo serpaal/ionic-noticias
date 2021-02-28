@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>
+      Categorias
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment scrollable (ionChange)="segmentChanged($event)">
+    <ion-segment-button value={{category}} *ngFor="let category of categories">   
+      <ion-label>{{category}}</ion-label>  
+  </ion-segment-button> 
+  </ion-segment>
+  <app-noticias [articles]="articles"></app-noticias>
+</ion-content>
