@@ -9,13 +9,30 @@ import { Article } from '../../interfaces/news';
 })
 export class Tab1Page  implements OnInit {
   articles: Article[] = [];
+  page_number = 1;
+  page_limit = 10;
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {
-    this.newsService.getArticles({country: "us"}).subscribe(res => {
-      this.articles = res.articles;
-      console.log(this.articles);
+    this.getArticles(null);
+  }
+
+  getArticles(event?){
+    this.newsService.getArticles({country: "us", page: this.page_number, pageSize: this.page_limit}).subscribe(res => {
+      this.articles.push(...res.articles);
+      if (res.articles.length == 0){
+        event.target.disabled = true;
+        event.target.complete();
+        return;
+      }
+      if(event)
+        event.target.complete();
+      this.page_number++;
     })
+  }
+
+  doInfinite(event) {
+    this.getArticles(event);
   }
 
 }
