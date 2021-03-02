@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Article } from '../../interfaces/news';
 
 @Component({
@@ -9,12 +8,9 @@ import { Article } from '../../interfaces/news';
 })
 export class NoticiasComponent implements OnInit {
   @Input() articles: Article[];
-  constructor(private iab: InAppBrowser) { }
+  constructor() { }
 
   ngOnInit() {}
-
-  showArticle(article: Article) {
-    this.iab.create(article.url.toString()).show();
-  }
+ 
 
 }
