@@ -7,11 +7,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div slot='fixed' style="position:relative">
   <ion-segment scrollable (ionChange)="segmentChanged($event)">
     <ion-segment-button value={{category}} *ngFor="let category of categories">   
       <ion-label>{{category}}</ion-label>  
   </ion-segment-button> 
   </ion-segment>
+  </div>
   <app-noticias [articles]="articles"></app-noticias>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Descargando...">

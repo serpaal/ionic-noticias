@@ -25,6 +25,7 @@ export class NoticiaComponent implements OnInit {
       cssClass: 'my-custom-class',
       buttons: [{
         text: 'Compartir enlace',
+        icon: 'share',
         handler: () => {
           this.socialSharing.share(
             article.title.toString(),
@@ -35,6 +36,7 @@ export class NoticiaComponent implements OnInit {
         }
       }, {
         text: 'Añadir a favoritos',
+        icon:'star',
         handler: () => {
           //this.ionList.closeSlidingItems();
           console.log('añadir a favoritos');
@@ -42,6 +44,7 @@ export class NoticiaComponent implements OnInit {
         }
       }, {
         text: 'Cancelar',
+        icon: 'close',
         role: 'cancel',
         handler: () => {
           
